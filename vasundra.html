@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vasundhara L - Profile | ELITE HACKERS</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .profile-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 3rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            backdrop-filter: blur(var(--glass-blur));
+            margin-bottom: 2rem;
+        }
+        .profile-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, var(--bg-secondary), #1a1a1a);
+            border: 2px solid var(--neon-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 0 30px var(--neon-glow-blue);
+        }
+        .profile-avatar svg {
+            width: 100px;
+            height: 100px;
+            stroke: var(--neon-blue);
+            stroke-width: 1;
+        }
+        .profile-name {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .profile-role {
+            font-size: 1.1rem;
+            color: var(--neon-green);
+            font-family: var(--font-heading);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .stat-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(var(--glass-blur));
+        }
+        .stat-val {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--neon-blue);
+            font-family: var(--font-heading);
+            margin-bottom: 0.2rem;
+        }
+        .stat-lab {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Resume Sections */
+        .section-box {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(var(--glass-blur));
+        }
+        .section-title-sm {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--neon-blue);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .section-title-sm::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: var(--glass-border);
+        }
+
+        /* Experience Item */
+        .resume-item {
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--glass-border);
+        }
+        .resume-item:last-child {
+            margin-bottom: 0;
+        }
+        .resume-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+        .resume-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .resume-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: #fff;
+        }
+        .resume-date {
+            font-size: 0.8rem;
+            color: var(--neon-green);
+            background: rgba(0, 255, 159, 0.1);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+        }
+        .resume-org {
+            color: var(--text-primary);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+        .resume-list {
+            list-style: none;
+            padding: 0;
+        }
+        .resume-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .resume-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--neon-blue);
+        }
+
+        /* Skills Matrix */
+        .skills-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .skill-cat h4 {
+            color: var(--neon-green);
+            margin-bottom: 1.2rem;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #fff;
+            transition: var(--transition-normal);
+        }
+        .skill-tag:hover {
+            border-color: var(--neon-blue);
+            background: rgba(0, 210, 255, 0.05);
+        }
+
+        /* Project Cards */
+        .project-grid-resume {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .proj-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.8rem;
+            transition: var(--transition-normal);
+            display: flex;
+            flex-direction: column;
+        }
+        .proj-card:hover {
+            border-color: var(--neon-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -15px var(--neon-glow-blue);
+        }
+        .proj-card h4 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+        }
+        .proj-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .proj-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .proj-tag {
+            font-size: 0.7rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--neon-blue);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+                padding: 2rem 1.5rem;
+            }
+            .profile-avatar {
+                width: 160px;
+                height: 160px;
+            }
+            .resume-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .stat-card {
+                padding: 1rem;
+            }
+            .stat-val {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="smooth-scroll">
+    <canvas id="bg-canvas"></canvas>
+    
+    <header>
+        <nav class="container">
+            <div class="logo">ELITE <span>HACKERS</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="members.html" class="active">Members</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-toggle"><span></span><span></span><span></span></div>
+        </nav>
+    </header>
+
+    <main class="pt-main container">
+        <div class="profile-container">
+            <a href="members.html" class="btn btn-secondary" style="margin-bottom: 2rem; padding: 0.6rem 1.2rem; font-size: 0.8rem;">
+                <span>&larr; Back to Team</span>
+            </a>
+
+            <!-- Header -->
+            <section class="profile-header fade-in">
+                <div class="profile-avatar">
+                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <div class="profile-info">
+                    <h1 class="profile-name">Vasundhara L</h1>
+                    <p class="profile-role">AI & Data Science Student | Full-Stack Developer</p>
+                    <p class="resume-desc" style="max-width: 600px; margin-bottom: 1.5rem;">
+                        Versatile technologist skilled in data analytics and full-stack development. I leverage PostgreSQL, Power BI, and Python to extract insights, operationalizing them through robust web applications.
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:vasundharalakshmanan1303@gmail.com" class="btn btn-primary"><span>Contact Me</span></a>
+                        <a href="https://www.linkedin.com/in/vasundharal?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="btn btn-secondary"><span>LinkedIn</span></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Quick View -->
+            <div class="hero-stats fade-in">
+                <div class="stat-card"><span class="stat-val">4+</span><span class="stat-lab">Internships</span></div>
+                <div class="stat-card"><span class="stat-val">6+</span><span class="stat-lab">Projects</span></div>
+                <div class="stat-card"><span class="stat-val">10+</span><span class="stat-lab">Tech Mastered</span></div>
+                <div class="stat-card"><span class="stat-val">8.5</span><span class="stat-lab">GPA Score</span></div>
+            </div>
+
+            <!-- About Me & Education -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <section class="section-box fade-in" style="margin-bottom: 0;">
+                    <h2 class="section-title-sm">About Me</h2>
+                    <p class="resume-desc">
+                        I am currently pursuing my Bachelor's in Artificial Intelligence & Data Science at Panimalar Engineering College, Chennai. As an emerging analyst and developer, I specialize in bridging the gap between deep data insights and practical, user-facing applications.
+                    </p>
+                </section>
+                <section class="section-box fade-in" style="margin-bottom: 0;">
+                    <h2 class="section-title-sm">Education</h2>
+                    <div class="resume-item">
+                        <h3 class="resume-title">B.Tech AI & Data Science</h3>
+                        <span class="resume-org">Sethu Engineering College</span>
+                        <p class="resume-desc">Madurai, India | GPA: 8.5</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Experience -->
+            <section class="section-box fade-in">
+                <h2 class="section-title-sm">Work Experience</h2>
+                
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <h3 class="resume-title">Student Intern (TANSAM - Siemens)</h3>
+                        <span class="resume-date">APRIL 2025</span>
+                    </div>
+                    <span class="resume-org">Siemens Technology Platform</span>
+                    <ul class="resume-list">
+                        <li>Developed interactive Power BI dashboards using industrial IoT data from Mind Sphere.</li>
+                        <li>Created geographical maps and performance visualizations for business intelligence.</li>
+                        <li>Analyzed equipment efficiency and energy consumption patterns.</li>
+                    </ul>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <h3 class="resume-title">Student Intern (MEAN Stack)</h3>
+                        <span class="resume-date">JUNE 2025</span>
+                    </div>
+                    <span class="resume-org">AAPGS PVT LTD, Madurai</span>
+                    <ul class="resume-list">
+                        <li>Engineered an AI-powered chatbot using MongoDB, Express.js, Angular, and Node.js.</li>
+                        <li>Integrated Cursor AI for NLP with WebSocket real-time communication.</li>
+                        <li>Implemented responsive frontend components and RESTful APIs.</li>
+                    </ul>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <h3 class="resume-title">Full-Stack Intern</h3>
+                        <span class="resume-date">DECEMBER 2025</span>
+                    </div>
+                    <span class="resume-org">IT Flex Solutions India Private Limited</span>
+                    <ul class="resume-list">
+                        <li>Contributed to the MERN stack development lifecycle of responsive applications.</li>
+                        <li>Engineered dynamic and reusable front-end components using React.js.</li>
+                        <li>Designed database schemas and managed CRUD operations with MongoDB.</li>
+                    </ul>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <h3 class="resume-title">Tech Intern</h3>
+                        <span class="resume-date">DECEMBER 2025</span>
+                    </div>
+                    <span class="resume-org">Clarisco - Blockchain, AI & IoT</span>
+                    <ul class="resume-list">
+                        <li>Gained hands-on exposure to front-end concepts and cloud-based storage.</li>
+                        <li>Explored integration of Blockchain and AI within software ecosystems.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Technical Skills -->
+            <section class="section-box fade-in">
+                <h2 class="section-title-sm">Technical Skills</h2>
+                <div class="skills-matrix">
+                    <div class="skill-cat">
+                        <h4>Data & AI</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Power BI</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">Machine Learning</span>
+                        </div>
+                    </div>
+                    <div class="skill-cat">
+                        <h4>Full-Stack</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MEAN Stack</span>
+                            <span class="skill-tag">MERN Stack</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Angular</span>
+                            <span class="skill-tag">React.js</span>
+                        </div>
+                    </div>
+                    <div class="skill-cat">
+                        <h4>Tools & Modern Tech</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">WebSocket</span>
+                            <span class="skill-tag">Agile/Scrum</span>
+                            <span class="skill-tag">IoT</span>
+                            <span class="skill-tag">Blockchain</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Projects -->
+            <section class="section-box fade-in">
+                <h2 class="section-title-sm">Key Projects</h2>
+                <div class="project-grid-resume">
+                    <div class="proj-card">
+                        <h4>Smart Door Lock (Ideathon)</h4>
+                        <p>Microcontroller system with authentication modules and companion app for remote access.</p>
+                        <div class="proj-tags">
+                            <span class="proj-tag">IoT</span>
+                            <span class="proj-tag">Mobile App</span>
+                            <span class="proj-tag">Security</span>
+                        </div>
+                    </div>
+                    <div class="proj-card">
+                        <h4>Student Attendance System</h4>
+                        <p>Computer vision and NFC-based verification for streamlined industrial attendance.</p>
+                        <div class="proj-tags">
+                            <span class="proj-tag">NFC</span>
+                            <span class="proj-tag">CV</span>
+                            <span class="proj-tag">Web App</span>
+                        </div>
+                    </div>
+                    <div class="proj-card">
+                        <h4>Highway Safety System</h4>
+                        <p>IoT sensor prototype that provides warnings during low visibility conditions.</p>
+                        <div class="proj-tags">
+                            <span class="proj-tag">IoT</span>
+                            <span class="proj-tag">Sensors</span>
+                            <span class="proj-tag">Safety</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Get In Touch -->
+            <section class="section-box fade-in" style="text-align: center;">
+                <h2 class="section-title-sm" style="justify-content: center;">Get In Touch</h2>
+                <div class="resume-desc" style="margin-bottom: 2rem;">
+                    <p>Based in Madurai, India | Available for Remote Work</p>
+                    <p>vasundharalakshmanan1303@gmail.com</p>
+                </div>
+                <div class="contact-links" style="justify-content: center;">
+                    <a href="mailto:vasundharalakshmanan1303@gmail.com" class="btn btn-primary"><span>Send Message</span></a>
+                    <a href="tel:8523944392" class="btn btn-secondary"><span>Call Now</span></a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Vasundhara L. | Portfolio built with ❤️ for the tech community</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

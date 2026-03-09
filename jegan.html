@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jegannaathan S.J - Profile | ELITE HACKERS</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .profile-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 3rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            backdrop-filter: blur(var(--glass-blur));
+            margin-bottom: 3rem;
+        }
+        .profile-avatar {
+            width: 220px;
+            height: 220px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, var(--bg-secondary), #1a1a1a);
+            border: 2px solid var(--neon-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 0 30px var(--neon-glow-blue);
+        }
+        .profile-avatar svg {
+            width: 100px;
+            height: 100px;
+            stroke: var(--neon-blue);
+            stroke-width: 1;
+        }
+        .profile-name {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .profile-role {
+            font-size: 1.1rem;
+            color: var(--neon-green);
+            font-family: var(--font-heading);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-item {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Resume Sections */
+        .section-box {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(var(--glass-blur));
+        }
+        .section-title-sm {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--neon-blue);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .section-title-sm::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: var(--glass-border);
+        }
+
+        /* Experience Item */
+        .resume-item {
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--glass-border);
+        }
+        .resume-item:last-child {
+            margin-bottom: 0;
+        }
+        .resume-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+        .resume-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .resume-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: #fff;
+        }
+        .resume-date {
+            font-size: 0.85rem;
+            color: var(--neon-green);
+            background: rgba(0, 255, 159, 0.1);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .resume-org {
+            color: var(--text-primary);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .resume-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .resume-list {
+            margin-top: 1rem;
+            list-style: none;
+        }
+        .resume-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .resume-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--neon-blue);
+        }
+
+        /* Tech Stack Tags */
+        .tech-tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .tech-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1.2rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #fff;
+            transition: var(--transition-normal);
+        }
+        .tech-pill:hover {
+            border-color: var(--neon-blue);
+            background: rgba(0, 210, 255, 0.05);
+            transform: translateY(-3px);
+        }
+
+        /* Project Cards */
+        .project-card-resume {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 1.8rem;
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 1.5rem;
+            transition: var(--transition-normal);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .project-card-resume:hover {
+            border-color: var(--neon-blue);
+            transform: translateX(8px);
+            box-shadow: -5px 0 20px rgba(0, 210, 255, 0.1);
+        }
+        .project-card-resume h4 {
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+        }
+        .project-tags {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .project-tag-sm {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--neon-blue);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+                padding: 2rem 1.5rem;
+            }
+            .profile-avatar {
+                width: 160px;
+                height: 160px;
+            }
+            .resume-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .contact-info {
+                grid-template-columns: 1fr;
+                text-align: left;
+                display: inline-grid;
+            }
+        }
+    </style>
+</head>
+<body class="smooth-scroll">
+    <canvas id="bg-canvas"></canvas>
+    
+    <header>
+        <nav class="container">
+            <div class="logo">ELITE <span>HACKERS</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="members.html" class="active">Members</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-toggle"><span></span><span></span><span></span></div>
+        </nav>
+    </header>
+
+    <main class="pt-main container">
+        <div class="profile-container">
+            <a href="members.html" class="btn btn-secondary" style="margin-bottom: 2rem; padding: 0.6rem 1.2rem; font-size: 0.8rem;">
+                <span>&larr; Back to Team</span>
+            </a>
+
+            <!-- Profile Header -->
+            <section class="profile-header fade-in">
+                <div class="profile-avatar">
+                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <div class="profile-info">
+                    <h1 class="profile-name">Jegannaathan S.J</h1>
+                    <p class="profile-role">Aspiring Data Analyst & Full-Stack Developer</p>
+                    <div class="contact-info">
+                        <div class="contact-item">Madurai, India</div>
+                        <div class="contact-item">jegannaathan4@gmail.com</div>
+                        <div class="contact-item">+91 9750577725</div>
+                    </div>
+                    <div class="contact-links">
+                        <a href="https://www.linkedin.com/in/jegannaathan-s-j-411174328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="btn btn-primary"><span>LinkedIn</span></a>
+                        <a href="mailto:jegannaathan4@gmail.com" class="btn btn-secondary"><span>Contact Me</span></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Me -->
+            <section class="section-box fade-in">
+                <h2 class="section-title-sm">About Me</h2>
+                <p class="resume-desc">
+                    I'm a passionate Computer Science Engineering student at Kamaraj College Of Engineering And Technology with a strong interest in Full-Stack Development, Data Analysis, and emerging technologies like AI and Blockchain. Through internships and personal projects, I've gained hands-on experience in building web applications using MEAN/MERN stack, developing REST APIs, working with databases, and implementing AI solutions.
+                </p>
+            </section>
+
+            <!-- Education & Certifications -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <section class="section-box fade-in" style="margin-bottom: 0;">
+                    <h2 class="section-title-sm">Education</h2>
+                    <div class="resume-item">
+                        <h3 class="resume-title">B.E – Computer Science & Engineering</h3>
+                        <span class="resume-org">Kamaraj College Of Engineering And Technology</span>
+                        <p class="resume-desc">2025 – 2028 | GPA: 8.0</p>
+                    </div>
+                </section>
+                <section class="section-box fade-in" style="margin-bottom: 0;">
+                    <h2 class="section-title-sm">Certifications</h2>
+                    <ul class="resume-list">
+                        <li>Data Science Workshop – Top Engineers</li>
+                        <li>Artificial Intelligence Workshop – Top Engineers</li>
+                        <li>Python & AI Courses – Infosys Springboard</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Tech Stack -->
+            <section class="section-box fade-in">
+                <h2 class="section-title-sm">Tech Stack</h2>
+                <div class="tech-tags-container">
+                    <span class="tech-pill">MEAN Stack</span>
+                    <span class="tech-pill">MERN Stack</span>
+                    <span class="tech-pill">React</span>
+                    <span class="tech-pill">Node.js</span>
+                    <span class="tech-pill">Express</span>
+                    <span class="tech-pill">MongoDB</span>
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">SQL</span>
+                    <span class="tech-pill">REST APIs</span>
+                    <span class="tech-pill">System Architecture</span>
+                    <span class="tech-pill">Data Science</span>
+                    <span class="tech-pill">Artificial Intelligence</span>
+                </div>
+            </section>
+
+            <!-- Experience -->
+            <section class="section-box fade-in">
+                <h2 class="section-title-sm">Work Experience</h2>
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <h3 class="resume-title">Student Intern (MERN Stack)</h3>
+                        <span class="resume-date">DEC 2025</span>
+                    </div>
+                    <span class="resume-org">IT Flex Solutions India Private Limited</span>
+                    <ul class="resume-list">
+                        <li>Full-stack development using MERN stack.</li>
+                        <li>Built responsive UI with React.</li>
+                        <li>Developed REST APIs with Node.js and Express.</li>
+                        <li>Managed MongoDB databases.</li>
+                    </ul>
+                </div>
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <h3 class="resume-title">Student Intern (MEAN Stack)</h3>
+                        <span class="resume-date">JUNE 2025</span>
+                    </div>
+                    <span class="resume-org">AAPGS Pvt Ltd – Madurai</span>
+                    <ul class="resume-list">
+                        <li>Built AI chatbot using MEAN stack.</li>
+                        <li>Integrated real-time WebSocket communication.</li>
+                    </ul>
+                </div>
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <h3 class="resume-title">Student Intern</h3>
+                        <span class="resume-date">DEC 2025</span>
+                    </div>
+                    <span class="resume-org">Clarisco – Blockchain, AI & IoT</span>
+                    <p class="resume-desc">Exposure to Blockchain, AI & IoT technologies. Learned MongoDB & MongoDB Atlas and Frontend basics using HTML & CSS.</p>
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section class="section-box fade-in">
+                <h2 class="section-title-sm">Key Projects</h2>
+                <div class="project-card-resume">
+                    <h4>Student Automated Attendance System</h4>
+                    <p>NFC + Computer Vision based attendance system for automated student tracking.</p>
+                    <div class="project-tags">
+                        <span class="project-tag-sm">Python</span>
+                        <span class="project-tag-sm">OpenCV</span>
+                        <span class="project-tag-sm">NFC</span>
+                    </div>
+                </div>
+                <div class="project-card-resume">
+                    <h4>Highway Safety System</h4>
+                    <p>Intelligent system to enhance highway safety using IoT and AI technologies.</p>
+                    <div class="project-tags">
+                        <span class="project-tag-sm">IoT</span>
+                        <span class="project-tag-sm">AI</span>
+                        <span class="project-tag-sm">Python</span>
+                    </div>
+                </div>
+                <div class="project-card-resume">
+                    <h4>Gesture-Controlled Vehicle</h4>
+                    <p>Vehicle controlled through gestures to assist visually impaired individuals.</p>
+                    <div class="project-tags">
+                        <span class="project-tag-sm">Arduino</span>
+                        <span class="project-tag-sm">Gesture Control</span>
+                        <span class="project-tag-sm">Embedded</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Connect -->
+            <section class="section-box fade-in" style="text-align: center;">
+                <h2 class="section-title-sm" style="justify-content: center;">Get In Touch</h2>
+                <p class="resume-desc" style="margin-bottom: 2rem;">
+                    Seeking opportunities to apply my technical skills in professional environments.
+                </p>
+                <div class="contact-links" style="justify-content: center;">
+                    <a href="mailto:jegannaathan4@gmail.com" class="btn btn-primary"><span>Email Me</span></a>
+                    <a href="tel:9750577725" class="btn btn-secondary"><span>Call Now</span></a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Jegannaathan S.J. All Rights Reserved. | Made with ❤️ by <span>ELITE HACKERS</span> Team</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

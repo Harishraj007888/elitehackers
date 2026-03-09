@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harishraj S - Profile | ELITE HACKERS</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .profile-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 3rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            backdrop-filter: blur(var(--glass-blur));
+            margin-bottom: 3rem;
+        }
+        .profile-avatar {
+            width: 220px;
+            height: 220px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, var(--bg-secondary), #1a1a1a);
+            border: 2px solid var(--neon-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 0 30px var(--neon-glow-blue);
+        }
+        .profile-avatar svg {
+            width: 100px;
+            height: 100px;
+            stroke: var(--neon-blue);
+            stroke-width: 1;
+        }
+        .profile-name {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .profile-role {
+            font-size: 1.1rem;
+            color: var(--neon-green);
+            font-family: var(--font-heading);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-item {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .contact-item i {
+            color: var(--neon-blue);
+        }
+
+        /* Resume Sections */
+        .section-box {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(var(--glass-blur));
+        }
+        .section-title-sm {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--neon-blue);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .section-title-sm::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: var(--glass-border);
+        }
+
+        /* Experience/Education Item */
+        .resume-item {
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--glass-border);
+        }
+        .resume-item:last-child {
+            margin-bottom: 0;
+        }
+        .resume-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+        .resume-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .resume-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: #fff;
+        }
+        .resume-date {
+            font-size: 0.85rem;
+            color: var(--neon-green);
+            background: rgba(0, 255, 159, 0.1);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .resume-org {
+            color: var(--text-primary);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .resume-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .resume-list {
+            margin-top: 1rem;
+            list-style: none;
+        }
+        .resume-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .resume-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--neon-blue);
+        }
+
+        /* Projects Grid */
+        .resume-projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-item {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition-normal);
+        }
+        .project-item:hover {
+            border-color: var(--neon-blue);
+            transform: translateY(-5px);
+        }
+        .project-item h4 {
+            color: #fff;
+            margin-bottom: 0.8rem;
+            font-family: var(--font-heading);
+        }
+        .project-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Certifications Tags */
+        .cert-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .cert-tag {
+            background: rgba(0, 210, 255, 0.05);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: var(--transition-normal);
+        }
+        .cert-tag:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px var(--neon-glow-blue);
+        }
+        .cert-tag i {
+            color: var(--neon-blue);
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+                padding: 2rem 1.5rem;
+            }
+            .profile-avatar {
+                width: 160px;
+                height: 160px;
+            }
+            .resume-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .contact-info {
+                grid-template-columns: 1fr;
+                text-align: left;
+                display: inline-grid;
+            }
+        }
+    </style>
+</head>
+<body class="smooth-scroll">
+    <canvas id="bg-canvas"></canvas>
+    
+    <header>
+        <nav class="container">
+            <div class="logo">ELITE <span>HACKERS</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="members.html" class="active">Members</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-toggle"><span></span><span></span><span></span></div>
+        </nav>
+    </header>
+
+    <main class="pt-main container">
+        <div class="profile-container">
+            <a href="members.html" class="btn btn-secondary" style="margin-bottom: 2rem; padding: 0.6rem 1.2rem; font-size: 0.8rem;">
+                <span>&larr; Back to Team</span>
+            </a>
+
+            <!-- Profile Header -->
+            <section class="profile-header fade-in">
+                <div class="profile-avatar">
+                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <div class="profile-info">
+                    <h1 class="profile-name">Harishraj S</h1>
+                    <p class="profile-role">Computer Science Engineer & MERN Stack Developer</p>
+                    <div class="contact-info">
+                        <div class="contact-item">Madurai, India</div>
+                        <div class="contact-item">+91 85239 44392</div>
+                        <div class="contact-item">harishsuresh024@gmail.com</div>
+                    </div>
+                    <div class="contact-links">
+                        <a href="mailto:harishsuresh024@gmail.com" class="btn btn-primary"><span>Get In Touch</span></a>
+                        <a href="https://www.linkedin.com/in/harish-suresh-75113a354?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="btn btn-secondary"><span>LinkedIn</span></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience -->
+            <section class="section-box fade-in">
+                <h2 class="section-title-sm">Work Experience</h2>
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <h3 class="resume-title">Student Intern</h3>
+                        <span class="resume-date">DEC 2025</span>
+                    </div>
+                    <span class="resume-org">IT FLEX SOLUTIONS INDIA PRIVATE LIMITED</span>
+                    <ul class="resume-list">
+                        <li>Completed an intensive MERN stack internship</li>
+                        <li>Worked on full-stack web application development</li>
+                        <li>Built reusable React components</li>
+                        <li>Developed RESTful APIs using Node.js and Express.js</li>
+                        <li>Managed MongoDB databases</li>
+                        <li>Collaborated in Agile teams</li>
+                    </ul>
+                </div>
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <h3 class="resume-title">Student Intern</h3>
+                        <span class="resume-date">DEC 2025</span>
+                    </div>
+                    <span class="resume-org">CLARISCO</span>
+                    <ul class="resume-list">
+                        <li>Learned full-stack development basics</li>
+                        <li>Worked with MongoDB Atlas</li>
+                        <li>Gained front-end experience using HTML & CSS</li>
+                        <li>Explored Blockchain, AI, and IoT concepts</li>
+                    </ul>
+                </div>
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <h3 class="resume-title">Active Member</h3>
+                        <span class="resume-date">AUG 2025 – PRESENT</span>
+                    </div>
+                    <span class="resume-org">Rotaract Club, Virudhunagar</span>
+                    <p class="resume-desc">Participating in community service and organizational activities.</p>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="section-box fade-in">
+                <h2 class="section-title-sm">Education</h2>
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <h3 class="resume-title">Bachelor's in Computer Science Engineering</h3>
+                    </div>
+                    <span class="resume-org">Kamaraj College of Engineering and Technology</span>
+                    <p class="resume-desc">
+                        Currently pursuing a degree in Computer Science Engineering with a focus on modern web technologies, software development, and emerging tech like AI and Blockchain.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section class="section-box fade-in">
+                <h2 class="section-title-sm">Key Projects</h2>
+                <div class="resume-projects">
+                    <div class="project-item">
+                        <h4>Automatic Attendance System (IoT + NFC)</h4>
+                        <p>Designed an IoT-based attendance system using NFC cards. Attendance data is securely stored in a software application and synced with a cloud database for real-time tracking.</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>Attendo – Attendance Software</h4>
+                        <p>Developed "Attendo," a specialized software for automatic attendance storage leveraging cloud computing and web sockets for instant data updates.</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>Hardware Registration System</h4>
+                        <p>Implemented a system where tapping an NFC card transfers stored data directly to an Excel sheet via web sockets, streamlining registration workflows.</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>Highway Safety System</h4>
+                        <p>Developed a critical safety system designed to alert approaching vehicles to slow down through visual and audio warnings, enhancing road awareness.</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>Gesture Controlled Vehicle</h4>
+                        <p>Built an innovative gesture-controlled vehicle specifically designed to assist visually impaired individuals with navigation and mobility.</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>TeamHub – Team Database</h4>
+                        <p>A comprehensive team management website featuring detailed bios, upcoming events, a documentation library, and an integrated team chat system.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certifications -->
+            <section class="section-box fade-in">
+                <h2 class="section-title-sm">Certifications</h2>
+                <div class="cert-tags">
+                    <div class="cert-tag">Python (Infosys)</div>
+                    <div class="cert-tag">Java (Infosys)</div>
+                    <div class="cert-tag">Artificial Intelligence (HP)</div>
+                    <div class="cert-tag">Cybersecurity (HP)</div>
+                </div>
+            </section>
+
+            <!-- Let's Connect -->
+            <section class="section-box fade-in" style="text-align: center;">
+                <h2 class="section-title-sm" style="justify-content: center;">Let's Connect</h2>
+                <p class="resume-desc" style="margin-bottom: 2rem;">
+                    I'm always open to discussing new opportunities, technology trends, and potential collaborations. Feel free to reach out!
+                </p>
+                <div class="contact-links" style="justify-content: center;">
+                    <a href="mailto:harishsuresh024@gmail.com" class="btn btn-primary"><span>Email Me</span></a>
+                    <a href="tel:8523944392" class="btn btn-secondary"><span>Call Now</span></a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Harishraj S. | Made with ❤️ by <span>ELITE HACKERS</span> Team</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
