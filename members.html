@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members - ELITE HACKERS</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Specific styles for the members page -->
+    <style>
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .member-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem;
+            cursor: pointer;
+        }
+        .avatar-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            position: relative;
+            background: linear-gradient(135deg, var(--bg-secondary), #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+            transition: var(--transition-normal);
+            overflow: hidden;
+        }
+        .avatar-container::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-blue), transparent, var(--neon-green));
+            z-index: -1;
+            border-radius: 50%;
+            animation: spinGlow 4s linear infinite;
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+        @keyframes spinGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .avatar-icon {
+            font-size: 3rem;
+            color: var(--neon-green);
+            transition: var(--transition-normal);
+        }
+        .member-card:hover .avatar-container {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px var(--neon-glow-blue);
+        }
+        .member-card:hover .avatar-container::before {
+            opacity: 1;
+        }
+        .member-card:hover .avatar-icon {
+            transform: scale(1.05);
+            color: #fff;
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+        .member-name {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            transition: var(--transition-normal);
+        }
+        .member-card:hover .member-name {
+            color: var(--neon-blue);
+            text-shadow: 0 0 5px var(--neon-glow-blue);
+        }
+        /* SVG Profile fallback icon */
+        .svg-icon {
+            width: 60px;
+            height: 60px;
+            fill: none;
+            stroke: var(--neon-green);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: stroke var(--transition-normal);
+        }
+        .member-card:hover .svg-icon {
+             stroke: #fff;
+             filter: drop-shadow(0 0 5px var(--neon-green));
+        }
+    </style>
+</head>
+</head>
+<body class="smooth-scroll">
+    <!-- Animated Background -->
+    <canvas id="bg-canvas"></canvas>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">ELITE <span>HACKERS</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="members.html" class="active">Members</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+    <!-- Main Content -->
+    <main class="pt-main container">
+        <h1 class="section-title fade-in">Meet The Team</h1>
+        <div class="members-grid">
+            <!-- Member 1 -->
+            <a href="harish-raj.html" class="card member-card fade-in" style="display: flex; text-decoration: none;">
+                <div class="avatar-container">
+                     <svg class="svg-icon" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <h3 class="member-name">Harish Raj S</h3>
+            </a>
+            <!-- Member 2 -->
+            <a href="varsha.html" class="card member-card fade-in" style="display: flex; text-decoration: none;">
+                <div class="avatar-container">
+                    <svg class="svg-icon" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <h3 class="member-name">Varsha S</h3>
+            </a>
+            <!-- Member 4 -->
+            <a href="vasundra.html" class="card member-card fade-in" style="display: flex; text-decoration: none;">
+                <div class="avatar-container">
+                    <svg class="svg-icon" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <h3 class="member-name">Vasundhara L</h3>
+            </a>
+            <!-- Member 5 -->
+            <a href="jegan.html" class="card member-card fade-in" style="display: flex; text-decoration: none;">
+                <div class="avatar-container">
+                    <svg class="svg-icon" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <h3 class="member-name">Jegannaathan S J</h3>
+            </a>
+            <!-- Member 6 -->
+            <a href="hari-hara.html" class="card member-card fade-in" style="display: flex; text-decoration: none;">
+                <div class="avatar-container">
+                    <svg class="svg-icon" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <h3 class="member-name">Hari Hara Sudhan S</h3>
+            </a>
+            <!-- Member 7 -->
+            <a href="monisha.html" class="card member-card fade-in" style="display: flex; text-decoration: none;">
+                <div class="avatar-container">
+                    <svg class="svg-icon" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <h3 class="member-name">Monisha S</h3>
+            </a>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Made with ❤️ by <span>ELITE HACKERS</span> Team</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

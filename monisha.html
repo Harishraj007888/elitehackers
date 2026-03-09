@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S. Monisha - Profile | ELITE HACKERS</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .profile-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 3rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            backdrop-filter: blur(var(--glass-blur));
+            margin-bottom: 3rem;
+        }
+        .profile-avatar {
+            width: 220px;
+            height: 220px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, var(--bg-secondary), #1a1a1a);
+            border: 2px solid var(--neon-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 0 30px var(--neon-glow-blue);
+        }
+        .profile-avatar svg {
+            width: 100px;
+            height: 100px;
+            stroke: var(--neon-blue);
+            stroke-width: 1;
+        }
+        .profile-name {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .profile-role {
+            font-size: 1.1rem;
+            color: var(--neon-green);
+            font-family: var(--font-heading);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-item {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Resume Sections */
+        .section-box {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(var(--glass-blur));
+        }
+        .section-title-sm {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--neon-blue);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .section-title-sm::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: var(--glass-border);
+        }
+
+        /* Experience Item */
+        .resume-item {
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--glass-border);
+        }
+        .resume-item:last-child {
+            margin-bottom: 0;
+        }
+        .resume-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+        .resume-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .resume-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: #fff;
+        }
+        .resume-date {
+            font-size: 0.85rem;
+            color: var(--neon-green);
+            background: rgba(0, 255, 159, 0.1);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .resume-org {
+            color: var(--text-primary);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .resume-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .resume-list {
+            margin-top: 1rem;
+            list-style: none;
+        }
+        .resume-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .resume-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--neon-blue);
+        }
+
+        /* Skill Progress Bars */
+        .skills-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        .skill-group h4 {
+            color: #fff;
+            font-family: var(--font-heading);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.5rem;
+        }
+        .skill-bar-container {
+            margin-bottom: 1.5rem;
+        }
+        .skill-bar-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+        .skill-bar-bg {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
+            box-shadow: 0 0 10px var(--neon-glow-blue);
+            border-radius: 3px;
+        }
+
+        /* Certifications List */
+        .certs-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .cert-card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition-normal);
+        }
+        .cert-card:hover {
+            border-color: var(--neon-blue);
+            transform: translateY(-5px);
+            background: rgba(0, 210, 255, 0.03);
+        }
+        .cert-card h4 {
+            color: #fff;
+            font-family: var(--font-heading);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .cert-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+                padding: 2rem;
+            }
+            .resume-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="smooth-scroll">
+    <canvas id="bg-canvas"></canvas>
+    
+    <header>
+        <nav class="container">
+            <div class="logo">ELITE <span>HACKERS</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="members.html" class="active">Members</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-toggle"><span></span><span></span><span></span></div>
+        </nav>
+    </header>
+
+    <main class="pt-main container">
+        <div class="profile-container">
+            <a href="members.html" class="btn btn-secondary" style="margin-bottom: 2rem; padding: 0.6rem 1.2rem; font-size: 0.8rem;">
+                <span>&larr; Back to Team</span>
+            </a>
+
+            <!-- Profile Header -->
+            <section class="profile-header fade-in">
+                <div class="profile-avatar">
+                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <div class="profile-info">
+                    <h1 class="profile-name">S. Monisha</h1>
+                    <p class="profile-role">Cybersecurity Student & Developer</p>
+                    <div class="contact-info">
+                        <div class="contact-item">Madurai, Tamil Nadu</div>
+                        <div class="contact-item">Monishasureshbabuz1z4@gmail.com</div>
+                        <div class="contact-item">Velammal Engineering College</div>
+                    </div>
+                    <div class="contact-links">
+                        <a href="mailto:Monishasureshbabuz1z4@gmail.com" class="btn btn-primary"><span>Email Me</span></a>
+                        <a href="#about" class="btn btn-secondary"><span>About Me</span></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Me -->
+            <section id="about" class="section-box fade-in">
+                <h2 class="section-title-sm">About Me</h2>
+                <p class="resume-desc">
+                    I am a dedicated Cybersecurity student currently pursuing my engineering degree at Velammal Engineering College. My passion lies in understanding and implementing security measures to protect digital infrastructure. Through my internship and personal projects, I have gained practical experience in full-stack web development using the MERN stack, combined with a strong foundation in security protocols. I am eager to apply my knowledge to real-world challenges in the cybersecurity field.
+                </p>
+            </section>
+
+             <!-- Skills Matrix -->
+             <section class="section-box fade-in">
+                <h2 class="section-title-sm">Technical Skills</h2>
+                <div class="skills-grid-modern">
+                    <div class="skill-group">
+                        <h4>Cybersecurity</h4>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-header"><span>Network Security</span><span>85%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-header"><span>Vulnerability Assessment</span><span>80%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-header"><span>Encryption Techniques</span><span>75%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 75%;"></div></div>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Web Development</h4>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-header"><span>MERN Stack</span><span>80%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-header"><span>HTML/CSS/JS</span><span>90%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-header"><span>AWS & Cloud</span><span>70%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 70%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience -->
+            <section class="section-box fade-in">
+                <h2 class="section-title-sm">Work Experience</h2>
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <h3 class="resume-title">MERN Stack Intern</h3>
+                        <span class="resume-date">Dec 2025 - Jan 2026</span>
+                    </div>
+                    <span class="resume-org">IT FLEX Solutions</span>
+                    <ul class="resume-list">
+                        <li>Learned and implemented MERN stack development essentials.</li>
+                        <li>Gained hands-on experience with HTML, CSS, and JavaScript.</li>
+                        <li>Successfully hosted websites and implemented responsive design principles.</li>
+                    </ul>
+                </div>
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <h3 class="resume-title">Web Developer & Security Projects</h3>
+                        <span class="resume-date">2024 - Present</span>
+                    </div>
+                    <span class="resume-org">Personal Projects</span>
+                    <ul class="resume-list">
+                        <li>Developed and hosted multiple websites focusing on security best practices.</li>
+                        <li>Implemented secure authentication systems and encryption techniques.</li>
+                        <li>Performed vulnerability testing on self-developed applications.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Certifications -->
+            <section class="section-box fade-in">
+                <h2 class="section-title-sm">Certifications</h2>
+                <div class="certs-list">
+                    <div class="cert-card">
+                        <h4>Cybersecurity Fundamentals</h4>
+                        <p>Comprehensive understanding of cybersecurity principles, threats, and defense mechanisms.</p>
+                    </div>
+                    <div class="cert-card">
+                        <h4>AWS Cloud Practitioner</h4>
+                        <p>Fundamentals of AWS cloud services, architecture, and security best practices.</p>
+                    </div>
+                    <div class="cert-card">
+                        <h4>Network Security</h4>
+                        <p>Securing network infrastructure, firewalls, and intrusion detection systems.</p>
+                    </div>
+                    <div class="cert-card">
+                        <h4>Web Development</h4>
+                        <p>Delotii - Front-end and back-end web development with secure coding focus.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="section-box fade-in">
+                <h2 class="section-title-sm">Education</h2>
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <h3 class="resume-title">B.E – Cybersecurity</h3>
+                        <span class="resume-date">2024 – 2028</span>
+                    </div>
+                    <span class="resume-org">Velammal Engineering College</span>
+                    <p class="resume-desc">Currently in Second Year. Focus on Cybersecurity concepts, Network Protocols, and Digital Defense.</p>
+                </div>
+            </section>
+
+            <!-- Connect -->
+            <section id="contact" class="section-box fade-in" style="text-align: center;">
+                <h2 class="section-title-sm" style="justify-content: center;">Get In Touch</h2>
+                <p class="resume-desc" style="margin-bottom: 2rem;">
+                    Currently looking for new opportunities in the cybersecurity field.
+                </p>
+                <div class="contact-links" style="justify-content: center;">
+                    <a href="mailto:Monishasureshbabuz1z4@gmail.com" class="btn btn-primary"><span>Say Hello</span></a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 S. Monisha. All Rights Reserved. | Made with ❤️ by <span>ELITE HACKERS</span> Team</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
