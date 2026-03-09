@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELITE HACKERS - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Specific styles for the home page hero -->
+    <style>
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: #fff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px var(--neon-blue), 0 0 40px var(--neon-blue);
+            animation: pulseGlow 3s infinite alternate;
+        }
+        .hero-subtitle {
+            font-family: var(--font-heading);
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--neon-green);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        @keyframes pulseGlow {
+            0% {
+                text-shadow: 0 0 10px var(--neon-blue), 0 0 40px var(--neon-blue);
+            }
+            100% {
+                text-shadow: 0 0 20px var(--neon-blue), 0 0 60px var(--neon-blue), 0 0 80px var(--neon-blue);
+            }
+        }
+    </style>
+</head>
+<body class="smooth-scroll">
+    <!-- Animated Background -->
+    <canvas id="bg-canvas"></canvas>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">ELITE <span>HACKERS</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="members.html">Members</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+    <!-- Hero Section -->
+    <main>
+        <section class="hero container">
+            <div class="hero-content fade-in">
+                <div class="badge neon-text">v2.0 Beta</div>
+                <h1 class="hero-title">ELITE HACKERS</h1>
+                <div class="glitch-wrapper">
+                    <h2 class="hero-subtitle glitch" data-text="Innovating Technology, Building the Future.">Innovating Technology, Building the Future.</h2>
+                </div>
+                <p class="hero-desc">
+                    A multi-disciplinary student collective pushing the boundaries of AI, IoT, and Cyber-Physical Systems. We don't just write code; we build environments.
+                </p>
+                <div class="hero-buttons">
+                    <a href="projects.html" class="btn btn-primary"><span>Explore Work</span></a>
+                    <a href="contact.html" class="btn btn-secondary"><span>Join Team</span></a>
+                </div>
+            </div>
+        </section>
+        <!-- Stats Section -->
+        <section class="stats container">
+            <div class="stat-item fade-in">
+                <h3 class="stat-number" data-target="25">0</h3>
+                <p class="stat-label">Projects Completed</p>
+            </div>
+            <div class="stat-item fade-in">
+                <h3 class="stat-number" data-target="15">0</h3>
+                <p class="stat-label">Active Members</p>
+            </div>
+            <div class="stat-item fade-in">
+                <h3 class="stat-number" data-target="10">0</h3>
+                <p class="stat-label">Awards Won</p>
+            </div>
+        </section>
+        <!-- Technical Excellence (Skills Matrix) -->
+        <section class="skills container">
+            <h2 class="section-title">Core Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">🤖</div>
+                    <h3>AI & ML</h3>
+                    <p>Deep Learning, Computer Vision, and Predictive Analytics.</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">🌐</div>
+                    <h3>Cyber Security</h3>
+                    <p>Penetration Testing, Ethical Hacking, and Cryptography.</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">🔌</div>
+                    <h3>IoT & Robotics</h3>
+                    <p>Embedded Systems, Hardware Integration, and Automation.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Made with ❤️ by <span>ELITE HACKERS</span> Team</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
