@@ -240,5 +240,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // --- Scroll to Top Functionality ---
+    const initScrollTop = () => {
+        const scrollTopBtn = document.createElement('div');
+        scrollTopBtn.className = 'scroll-top';
+        scrollTopBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+        `;
+        document.body.appendChild(scrollTopBtn);
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    };
+
+    initScrollTop();
     initChatbot();
 });

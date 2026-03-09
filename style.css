@@ -91,9 +91,9 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
 
-h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); }
-h2 { font-size: clamp(2rem, 6vw, 3rem); }
-h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
+h1 { font-size: clamp(2rem, 10vw, 4.5rem); }
+h2 { font-size: clamp(1.5rem, 8vw, 3rem); }
+h3 { font-size: clamp(1.2rem, 6vw, 2rem); }
 
 a {
   text-decoration: none;
@@ -596,8 +596,13 @@ footer span {
 
 @media (max-width: 480px) {
   .chat-window {
-    width: calc(100vw - 4rem);
-    bottom: 80px;
-    right: -1rem;
+    width: 90vw;
+    height: 70vh;
+    bottom: 90px;
+    right: 5vw;
+    border-radius: 15px;
+  }
+  .chat-window.active {
+    transform: translateY(0) scale(1);
   }
 }
