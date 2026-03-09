@@ -155,4 +155,90 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+    // --- Chatbot Implementation ---
+    const initChatbot = () => {
+        const chatbotHTML = `
+            <div class="chatbot-widget">
+                <div class="chat-window" id="chatWindow">
+                    <div class="chat-header">
+                        <div class="dot"></div>
+                        <span>ELITE AI Assistant</span>
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot">Hi there! 👋 I'm the ELITE HACKERS assistant. How can I help you today?</div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chatInput" placeholder="Type a message...">
+                        <button class="send-btn" id="sendBtn">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <button class="chat-toggle" id="chatToggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </button>
+            </div>
+        `;
+
+        document.body.insertAdjacentHTML('beforeend', chatbotHTML);
+
+        const toggle = document.getElementById('chatToggle');
+        const window = document.getElementById('chatWindow');
+        const input = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const messages = document.getElementById('chatMessages');
+
+        const responses = {
+            "hello": "Hello! How can I assist you with ELITE HACKERS projects today?",
+            "members": "We have an amazing team! You can check them out on our Members page.",
+            "projects": "We're working on AI, IoT, and Web projects. Visit the Projects page for details.",
+            "contact": "You can reach us through the Contact page or email us at info@elitehackers.tech",
+            "default": "That's interesting! Feel free to explore our portfolio to learn more about our work."
+        };
+
+        const addMessage = (text, sender) => {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${sender}`;
+            msgDiv.textContent = text;
+            messages.appendChild(msgDiv);
+            messages.scrollTop = messages.scrollHeight;
+        };
+
+        const handleSend = () => {
+            const text = input.value.trim().toLowerCase();
+            if (!text) return;
+
+            addMessage(input.value, 'user');
+            input.value = '';
+
+            // Simple bot logic
+            setTimeout(() => {
+                let response = responses.default;
+                for (const key in responses) {
+                    if (text.includes(key)) {
+                        response = responses[key];
+                        break;
+                    }
+                }
+                addMessage(response, 'bot');
+            }, 600);
+        };
+
+        toggle.addEventListener('click', () => {
+            window.classList.toggle('active');
+        });
+
+        sendBtn.addEventListener('click', handleSend);
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSend();
+        });
+    };
+
+    initChatbot();
 });

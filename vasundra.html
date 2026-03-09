@@ -41,7 +41,7 @@
         }
         .profile-name {
             font-family: var(--font-heading);
-            font-size: 3rem;
+            font-size: clamp(2rem, 6vw, 3.5rem);
             color: #fff;
             margin-bottom: 0.5rem;
         }
@@ -257,13 +257,22 @@
             .profile-header {
                 flex-direction: column;
                 text-align: center;
-                gap: 2rem;
-                padding: 2rem;
+                gap: 1.5rem;
+                padding: 2rem 1.5rem;
+            }
+            .profile-avatar {
+                width: 160px;
+                height: 160px;
             }
             .resume-header {
                 flex-direction: column;
-                align-items: center;
                 gap: 0.5rem;
+            }
+            .stat-card {
+                padding: 1rem;
+            }
+            .stat-val {
+                font-size: 1.5rem;
             }
         }
     </style>
